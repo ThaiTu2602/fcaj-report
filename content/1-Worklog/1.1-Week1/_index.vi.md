@@ -1,59 +1,30 @@
 ---
 title: "Worklog Tuần 1"
-date: 2024-01-01
+date: 2026-04-20
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 1:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tham gia buổi lễ khai mạc (Kickoff Event) của chương trình thực tập AWS.
+* Nắm rõ nội quy, quy định chung của đơn vị thực tập.
+* Khởi tạo tài khoản AWS cá nhân để phục vụ quá trình học tập và thực hành.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
+| 2 | **Tham gia buổi lễ Kickoff** <br>- Tham dự buổi lễ khai mạc chương trình thực tập do AWS tổ chức <br>- Làm quen với các thành viên, mentor và đội ngũ hỗ trợ <br>- Tiếp nhận thông tin tổng quan về lộ trình đào tạo | 20/04/2026 | 20/04/2026 | |
+| 3 | **Nghiên cứu nội quy & quy định** <br>- Đọc và tìm hiểu kỹ nội quy, quy định chung tại đơn vị thực tập <br>- Nắm bắt các yêu cầu về tiến độ, báo cáo và đánh giá | 21/04/2026 | 21/04/2026 | |
+| 4 | **Khởi tạo tài khoản AWS** <br>- Đăng ký tài khoản AWS cá nhân <br>- Cấu hình thông tin cơ bản và bảo mật tài khoản (MFA) <br>- Làm quen với giao diện AWS Management Console | 22/04/2026 | 23/04/2026 | |
+| 6 | **Khám phá dịch vụ AWS cơ bản** <br>- Tìm hiểu tổng quan các nhóm dịch vụ: Compute, Storage, Networking, Database <br>- Thực hành điều hướng trên AWS Console | 24/04/2026 | 25/04/2026 | |
 
 ### Kết quả đạt được tuần 1:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* **Hoàn thành buổi Kickoff Event**: Tham gia đầy đủ buổi lễ khai mạc, nắm bắt được lộ trình đào tạo 12 tuần và các mục tiêu cần đạt được trong chương trình thực tập.
+* **Nắm vững nội quy đơn vị thực tập**: Đọc và hiểu rõ các quy định về giờ giấc, tiến độ báo cáo, quy trình làm việc và tiêu chí đánh giá tại đơn vị thực tập.
+* **Khởi tạo thành công tài khoản AWS**: Đăng ký và cấu hình tài khoản AWS cá nhân, thiết lập bảo mật nhiều lớp (MFA) để bảo vệ tài khoản.
+* **Làm quen với AWS Management Console**: Thực hành điều hướng giao diện quản lý AWS, hiểu cách tìm kiếm và truy cập các dịch vụ cơ bản trên nền tảng Cloud.
+* **Xây dựng nền tảng kiến thức Cloud ban đầu**: Có cái nhìn tổng quan về hệ sinh thái dịch vụ AWS và vai trò của từng nhóm dịch vụ trong kiến trúc Cloud.

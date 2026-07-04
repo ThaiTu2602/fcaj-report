@@ -1,108 +1,101 @@
 ---
 title: "Bản đề xuất"
-date: 2024-01-01
+date: 2026-07-01
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Jobs Matching Platform
+## Giải pháp AWS Serverless tổng hợp việc làm và phân tích hồ sơ tự động
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
+### 1. Tóm tắt điều hành
+Jobs Matching Platform được thiết kế bởi nhóm NOVA nhằm tự động hóa toàn diện quy trình thu thập dữ liệu việc làm và đánh giá mức độ phù hợp của hồ sơ ứng viên (CV). Giải pháp này phục vụ trực tiếp nhu cầu tối ưu hóa quá trình tìm kiếm việc làm, đặc biệt hướng tới đối tượng sinh viên và nhân sự khối ngành công nghệ thông tin. Thông qua việc ứng dụng trí tuệ nhân tạo vào đối chiếu năng lực, nền tảng hỗ trợ người dùng rút ngắn thời gian tìm kiếm và định vị chính xác vị trí công việc phù hợp. Hệ thống tận dụng triệt để hệ sinh thái AWS Serverless nhằm đảm bảo tính sẵn sàng cao, khả năng mở rộng linh hoạt và tối ưu hóa chi phí vận hành.
 
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+### 2. Tuyên bố vấn đề
+*Vấn đề hiện tại*
+Quá trình tìm kiếm thông tin tuyển dụng trên nhiều nền tảng phân tán hiện nay đòi hỏi lượng lớn thời gian và thao tác thủ công. Người tìm việc thường gặp trở ngại trong việc tự đánh giá khách quan và chính xác mức độ phù hợp của năng lực cá nhân đối với yêu cầu cụ thể của từng mô tả công việc, đặc biệt là với các bộ kỹ năng chuyên sâu như lập trình hay quản trị hạ tầng đám mây.
 
-### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+*Giải pháp*
+Hệ thống sử dụng dịch vụ AWS Lambda để tự động thu thập thông tin công việc qua SerpApi, điều phối và kiểm soát luồng dữ liệu thông qua Amazon SQS, sau đó lưu trữ có cấu trúc tại Amazon DynamoDB. Phân hệ tương tác người dùng được bảo vệ bởi tường lửa AWS WAF và quản lý xác thực qua Amazon Cognito. Luồng phân tích CV tự động trích xuất văn bản từ tài liệu được tải lên Amazon S3, tiếp nối bằng việc tích hợp dịch vụ AI để đối chiếu, phân tích ngữ nghĩa và chấm điểm mức độ phù hợp. Toàn bộ quy trình phát triển và quản lý tác vụ phần mềm được vận hành chặt chẽ thông qua Jira, kết hợp kiểm soát phiên bản mã nguồn trên GitHub.
 
-### 2. Tuyên bố vấn đề  
-*Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+*Lợi ích và hoàn vốn đầu tư (ROI)*
+Giải pháp tiến tới chuẩn hóa toàn trình quy trình tìm kiếm và chắt lọc công việc. Việc vận dụng các kiến thức thực tiễn từ các bài thực hành và tự nghiên cứu về kiến trúc AWS Cloud giúp thiết kế hệ thống đạt hiệu suất cao với chi phí vận hành tối thiểu. Nền tảng hạ tầng serverless đảm bảo chi phí chỉ phát sinh dựa trên lưu lượng tính toán thực tế, mang lại hiệu quả kinh tế tối ưu và khả năng mở rộng hệ thống minh bạch trong tương lai.
 
-*Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+### 3. Kiến trúc giải pháp
+![Kiến trúc nền tảng](/images/2-Proposal/Jobs-Matching-Platform-Architecture.png)
 
-*Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+Nền tảng được xây dựng dựa trên nguyên tắc kiến trúc AWS Serverless, phân chia thành các luồng xử lý độc lập nhưng có tính liên kết chặt chẽ: thu thập dữ liệu, tương tác người dùng, phân tích hồ sơ và vận hành bảo mật.
 
-### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+*Dịch vụ AWS sử dụng*
+- *AWS EventBridge Scheduler*: Lên lịch tự động hóa quá trình kích hoạt truy xuất dữ liệu việc làm từ SerpApi.
+- *AWS Lambda*: Đảm nhiệm xử lý logic nghiệp vụ cho các tác vụ lấy dữ liệu, tìm kiếm, trích xuất văn bản CV và giao tiếp với API của mô hình AI.
+- *Amazon SQS*: Quản lý hàng đợi tin nhắn, đóng vai trò cơ chế đệm nhằm chống quá tải cho quá trình chuẩn hóa khối lượng lớn dữ liệu việc làm.
+- *Amazon Cognito*: Quản lý định danh, xác thực và phân quyền truy cập người dùng.
+- *AWS Amplify*: Cung cấp môi trường lưu trữ và phân phối ứng dụng giao diện web (Hosting).
+- *AWS WAF & Amazon API Gateway*: Thiết lập tuyến phòng thủ bảo vệ ứng dụng khỏi các lỗ hổng bảo mật web và phân phối lưu lượng RESTful API một cách an toàn.
+- *Amazon DynamoDB*: Lưu trữ danh sách công việc, danh sách yêu thích cá nhân và kết quả đánh giá CV.
+- *Amazon S3*: Cung cấp kho lưu trữ an toàn, độ bền cao và khả năng mở rộng không giới hạn dành cho các tệp hồ sơ ứng viên.
+- *AWS IAM, Amazon CloudWatch, AWS Budgets*: Thực thi quản trị phân quyền cốt lõi, giám sát sức khỏe hệ thống và kiểm soát nghiêm ngặt ngân sách vận hành.
+- *AWS Systems Manager (SSM) Parameter Store*: Lưu trữ và quản lý an toàn các API keys và cấu hình nhạy cảm.
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+*Thiết kế thành phần*
 
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
+- *Jobs Ingestion*: Thu thập dữ liệu theo lịch trình từ nền tảng bên thứ ba, xử lý bất đồng bộ thông qua SQS, tiến hành chuẩn hóa dữ liệu bằng Lambda và lưu trữ vào DynamoDB với cơ chế vòng đời dữ liệu (TTL) được thiết lập.
+- *User Interaction*: Giao diện front-end giao tiếp qua API Gateway, cho phép thực thi các truy vấn trên DynamoDB để lọc, tìm kiếm việc làm và lưu trữ vào bảng danh mục yêu thích độc lập.
+- *CV Matching Flow*: Kích hoạt tự động dựa trên sự kiện người dùng tải CV lên S3. Hệ thống tiến hành bóc tách nội dung văn bản, chuyển tiếp dữ liệu tới dịch vụ AI để đánh giá, đối chiếu đa chiều với mô tả công việc và ghi nhận điểm số trả về.
 
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+### 4. Triển khai kỹ thuật
+Dự án được cấu trúc thành 3 phần chính: Thu thập và xử lý dữ liệu; Xây dựng hệ thống tổng hợp việc làm; Đánh giá CV theo công việc. Mỗi phần được triển khai qua 4 giai đoạn cụ thể:
+1. *Nghiên cứu và thiết kế*: Phân tích chuyên sâu cấu trúc dữ liệu trả về từ SerpApi và thiết kế quy trình xác thực người dùng đa lớp. Nghiên cứu tài liệu về kiến trúc AWS Serverless để lựa chọn dịch vụ phù hợp.
+2. *Tính toán chi phí và cấu hình*: Khởi tạo giới hạn ngân sách tự động trên nền tảng AWS và chuẩn bị môi trường kiểm thử cục bộ thông qua các container Docker.
+3. *Phát triển luồng nghiệp vụ và đánh giá khả thi*: Xây dựng các hàm tính toán Lambda, thiết lập định tuyến API Gateway, cấu hình pipeline xử lý hàng đợi SQS và tối ưu hóa cấu trúc dữ liệu NoSQL của DynamoDB. Tinh chỉnh liên tục để đảm bảo cân bằng giữa hiệu suất và chi phí.
+4. *Kiểm thử và triển khai*: Thực hiện kiểm thử chịu tải, kiểm định độ chính xác của logic hệ thống, xử lý ngoại lệ và đưa vào môi trường vận hành thực tế.
 
-### 4. Triển khai kỹ thuật  
-*Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+*Yêu cầu kỹ thuật*
+- *Thu thập và xử lý dữ liệu*: Dữ liệu thô tiếp nhận từ SerpApi bắt buộc phải trải qua quá trình làm sạch và chuẩn hóa định dạng trước khi tiến hành thao tác ghi vào DynamoDB.
+- *Thiết kế cơ sở dữ liệu*: Yêu cầu thiết kế mô hình dữ liệu DynamoDB với khóa phân vùng (partition key) và khóa sắp xếp (sort key) tối ưu nhằm phục vụ các truy xuất tốc độ cao và giảm thiểu chi phí đọc/ghi.
+- *Tích hợp AI*: Dịch vụ ngôn ngữ tích hợp cần đảm bảo độ trễ thấp và khả năng hiểu ngữ cảnh chuyên ngành chính xác để phân tích các hồ sơ kỹ thuật phức tạp một cách khách quan nhất.
 
-*Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+### 5. Lộ trình & Mốc triển khai
+Lộ trình thực thi được hoạch định trong khuôn khổ 12 tuần của chương trình First Cloud AI Journey tại AWS Vietnam:
+- *Tuần 1 - Tuần 6*: Tiếp thu kiến thức nền tảng và hoàn thành các bài thực hành (lab) theo chương trình để củng cố chuyên môn về hệ sinh thái dịch vụ AWS Cloud.
+- *Tuần 6 - Tuần 10*: Hình thành ý tưởng, hoàn thiện bản thiết kế kiến trúc tổng thể cho dự án nhóm và tiến hành lập trình, xây dựng hệ thống cốt lõi.
+- *Tuần 11 - Tuần 12*: Thực thi quy trình kiểm thử toàn diện, đánh giá mức độ hoàn thiện của hệ thống, tinh chỉnh cuối cùng và triển khai đưa vào sử dụng thực tế.
 
-### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+### 6. Ước tính ngân sách
+Hệ thống vận hành hoàn toàn theo mô hình trả phí theo mức sử dụng thực tế (pay-as-you-go).
 
-### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+*Chi phí hạ tầng dự kiến*
+- *SerpApi*: Tận dụng hạn mức miễn phí 250 lượt truy vấn/tháng. Với tần suất sử dụng hiện tại là 8 lượt/ngày, tổng mức sử dụng tối đa đạt 248 lượt/tháng, tương đương chi phí 0 USD.
+- *AWS Lambda*: Tối ưu chi phí bằng cách vận dụng hạn mức miễn phí (1 triệu yêu cầu và 400.000 GB-giây tính toán mỗi tháng). Chi phí phát sinh duy trì ở mức tiệm cận không đối với các xử lý thông thường. Khi vượt hạn mức, chi phí áp dụng là 0.20 USD cho mỗi 1 triệu yêu cầu.
+- *AWS Amplify*: Nằm trong giới hạn miễn phí (Free Tier) với 1.000 phút build/tháng, 5 GB lưu trữ và 15 GB băng thông truyền tải mỗi tháng. Với quy mô dự án hiện tại, chi phí dự kiến là 0 USD. Nếu vượt hạn mức, chi phí là 0.01 USD/phút build, 0.023 USD/GB lưu trữ và 0.15 USD/GB băng thông.
+- *Amazon SQS & DynamoDB*: Nằm trong giới hạn miễn phí với 1 triệu yêu cầu SQS/tháng, 25 GB lưu trữ và 25 WCU/RCU cho DynamoDB. Với khối lượng dữ liệu việc làm, chi phí dự kiến là 0 USD. Nếu vượt mức, DynamoDB tính phí 1.25 USD/1 triệu WCU và 0.25 USD/1 triệu RCU.
+- *Amazon S3*: Nằm trong giới hạn miễn phí 5 GB lưu trữ, 20.000 yêu cầu GET và 2.000 yêu cầu PUT. Ước tính với khoảng 1.000 CV (~1 GB), chi phí là 0 USD. Nếu vượt mức, chi phí là 0.023 USD/GB.
+- *Amazon API Gateway*: Nằm trong giới hạn miễn phí 1 triệu lượt gọi API/tháng. Chi phí dự kiến là 0 USD. Vượt hạn mức tính phí 1.00 USD/1 triệu lượt gọi.
+- *AWS WAF*: Không có gói miễn phí vĩnh viễn. Phí duy trì 5.00 USD/tháng cho 1 Web ACL, 1.00 USD/tháng cho mỗi quy tắc (Rule) và 0.60 USD/1 triệu yêu cầu. Chi phí dự kiến tối thiểu khoảng 6.00 - 7.00 USD/tháng (nếu bật WAF).
+- *Gemini Flash Lite 3.1*:
+  - *Hạn mức miễn phí*: 15 yêu cầu/phút; 250.000 tokens/phút; 500 yêu cầu/ngày.
+  - *Hạn mức trả phí*: Văn bản đầu vào ở mức 0.25 USD / 1 triệu tokens; Đầu ra (bao gồm token suy luận) ở mức 1.50 USD / 1 triệu tokens.
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+*Tổng chi phí và khả năng duy trì*
+- **Tổng chi phí dự kiến trong 1 tháng**: Khoảng **0.00 USD** (nếu không bật WAF) hoặc **~8.00 USD** (nếu duy trì WAF bảo mật).
+- **Khả năng duy trì**: Với kiến trúc Serverless, dự án hoàn toàn tận dụng được các gói Free Tier của AWS. Điều này mang lại khả năng duy trì hệ thống trong dài hạn với mức phí gần như bằng 0. Khi có lượng người dùng lớn, chi phí mới bắt đầu phát sinh tuyến tính theo lượng truy cập, giúp tối ưu hóa rủi ro tài chính cho sinh viên.
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+### 7. Đánh giá rủi ro
+*Ma trận rủi ro*
+- *Phụ thuộc dữ liệu*: Mức độ ảnh hưởng cao, xác suất trung bình (Hệ thống phụ thuộc vào API thu thập dữ liệu việc làm từ bên thứ 3 - SerpApi).
+- *Chất lượng đánh giá CV*: Mức độ ảnh hưởng cao, xác suất trung bình (Kết quả hoàn toàn phụ thuộc vào năng lực của mô hình AI được sử dụng).
 
-### 7. Đánh giá rủi ro  
-*Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+*Chiến lược giảm thiểu*
+- *API & Lưu lượng*: Ứng dụng kiến trúc hướng sự kiện với SQS để điều tiết lưu lượng xử lý. Triển khai thuật toán chờ lũy thừa (exponential backoff) nhằm xử lý hiệu quả các lỗi giới hạn tốc độ (rate limit) khi truy xuất dữ liệu bên ngoài.
+- *Chi phí*: Thiết lập AWS Budgets để tự động kích hoạt thông báo cảnh báo đến quản trị viên khi chi phí tiêu thụ thực tế chạm ngưỡng 80% ngân sách cho phép.
+- *Đánh giá AI*: Phát triển tính năng minh bạch hóa, cho phép ứng viên tự kiểm tra và xác nhận danh sách các kỹ năng được trích xuất từ CV trước khi hệ thống tiến hành đối chiếu kết quả cuối cùng.
 
-*Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
+*Kế hoạch dự phòng*
+- Kích hoạt quy trình thu thập dữ liệu nội bộ thủ công trong trường hợp dịch vụ API bên thứ ba hoặc nền tảng AWS gặp sự cố ngưng trệ.
+- Sử dụng công cụ cơ sở hạ tầng dưới dạng mã (AWS CloudFormation) để nhanh chóng khôi phục, tái tạo cấu hình mạng và dịch vụ liên quan nhằm kiểm soát sự cố.
 
-*Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
-
-### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+### 8. Kết quả kỳ vọng
+*Cải tiến kỹ thuật*: Hiện thực hóa tự động hóa hoàn toàn chuỗi quy trình lấy dữ liệu và sàng lọc năng lực. Phương pháp đối chiếu bằng AI mang lại độ phân giải dữ liệu cao hơn, tối ưu hóa kết quả tìm kiếm mang tính cá nhân hóa vượt trội so với phương thức lọc từ khóa rập khuôn truyền thống.
+*Giá trị dài hạn*: Xây dựng nền tảng kho dữ liệu việc làm định lượng liên tục được làm giàu, tạo tiền đề phục vụ cho các phân tích chuyên sâu về xu hướng thị trường lao động. Hệ thống cho phép mở rộng quy mô một cách độc lập để tích hợp thêm các tính năng phân tích dự đoán và học máy trong các chu kỳ phát triển tiếp theo.

@@ -1,57 +1,31 @@
 ---
 title: "Week 3 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-05-04
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 3 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Learn and study foundational knowledge of Cloud networking with **Amazon VPC**.
+* Initialize, configure, and understand the operational mechanisms of virtual servers using **Amazon EC2**.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
+| 2 | **Explore Amazon VPC Architecture** <br>- Study core concepts: VPC, Subnet, CIDR Block <br>- Differentiate between Public Subnet and Private Subnet <br>- Learn about Internet Gateway and Route Table | 04/05/2026 | 04/05/2026 | |
+| 3 | **Hands-on VPC Creation** <br>- Create a VPC with appropriate CIDR configuration <br>- Create Public Subnet and Private Subnet <br>- Create and attach Internet Gateway to the VPC <br>- Configure Route Tables for Subnets | 05/05/2026 | 05/05/2026 | |
+| 4 | **Explore Amazon EC2** <br>- Study Instance Types (t2, t3, m5, ...) <br>- Learn about Amazon Machine Image (AMI) <br>- Understand Elastic Block Store (EBS) and volume types | 06/05/2026 | 06/05/2026 | |
+| 5 | **Hands-on EC2 Initialization** <br>- Create Security Group for EC2 Instance <br>- Launch EC2 Instance in Public Subnet <br>- Configure Key Pair and SSH connection to Instance | 07/05/2026 | 07/05/2026 | |
+| 6 | **Advanced Networking Configuration for EC2** <br>- Launch EC2 Instance in Private Subnet <br>- Allocate Elastic IP <br>- Create NAT Gateway to enable Private Instance internet access <br>- Validate connectivity between Public and Private EC2 | 08/05/2026 | 09/05/2026 | |
 
 ### Week 3 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* **Mastered Amazon VPC Network Architecture**: Clearly understood the core components of VPC including Subnet, CIDR Block, Internet Gateway, and Route Table, along with their roles in building a secure Cloud network infrastructure.
+* **Designed Multi-Tier VPC Network**: Successfully built a VPC architecture with Public Subnet and Private Subnet, separating resources by access levels to enhance security.
+* **Deployed Amazon EC2 Virtual Servers**: Initialized and configured EC2 Instances with appropriate Instance Types, AMIs, and EBS volumes, understanding the operational process of virtual servers on the Cloud.
+* **Configured Secure Connectivity**: Set up Security Groups, Key Pairs, and SSH connections to securely manage EC2 Instances remotely.
+* **Deployed NAT Gateway**: Configured NAT Gateway and Elastic IP to enable EC2 Instances in Private Subnet to access the outbound Internet without exposing them to inbound Internet traffic.
+* **Validated End-to-End Connectivity**: Successfully tested communication between EC2 Instances in Public and Private Subnets, ensuring network traffic flow operated as designed.

@@ -1,33 +1,30 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-07-03
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+# Serverless Jobs Matching Platform
 
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+Trong workshop này, bạn sẽ xây dựng **Jobs Matching Platform** - một hệ thống tự động tổng hợp việc làm và phân tích hồ sơ ứng viên (CV) bằng cách sử dụng hoàn toàn các dịch vụ AWS Serverless (AWS Lambda, DynamoDB, SQS, S3, API Gateway, Cognito, EventBridge, WAF, và Amplify).
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
-
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
+Bạn sẽ cấu hình và xây dựng các thành phần:
++ **Jobs Ingestion Pipeline** - Tự động thu thập dữ liệu việc làm bằng EventBridge, Lambda, SQS, và lưu trữ trong DynamoDB.
++ **Tương tác người dùng** - Bảo mật API Gateway, Cognito User Pool để xác thực, DynamoDB cho cơ sở dữ liệu, các Lambda API nghiệp vụ chính và triển khai Frontend trên AWS Amplify.
++ **Luồng đánh giá CV** - Xử lý CV được tải lên S3, trích xuất nội dung bằng Lambda, gọi API Gemini để phân tích mức độ phù hợp và lưu kết quả.
++ **Vận hành & Bảo mật** - Cấu hình IAM policies, quản lý API key, giám sát & cảnh báo với CloudWatch và quản lý chi phí qua AWS Budgets.
 
 #### Nội dung
 
-1. [Tổng quan về workshop](5.1-Workshop-overview/)
-2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Truy cập đến S3 từ VPC](5.3-S3-vpc/)
-4. [Truy cập đến S3 từ TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (làm thêm)](5.5-Policy/)
-6. [Dọn dẹp tài nguyên](5.6-Cleanup/)
+1. [Giới thiệu](5.1-Workshop-overview/)
+2. [Các bước chuẩn bị](5.2-Prerequiste/)
+3. [Jobs Ingestion Pipeline](5.3-Job-Ingestion/)
+4. [Tương tác người dùng](5.4-User-Interaction/)
+5. [Luồng đánh giá CV](5.5-CV-Matching-Flow/)
+6. [Vận hành & Bảo mật](5.6-Operations-Security/)
+7. [Dọn dẹp tài nguyên](5.7-Cleanup/)

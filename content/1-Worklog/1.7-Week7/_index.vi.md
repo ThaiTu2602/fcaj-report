@@ -1,59 +1,31 @@
 ---
 title: "Worklog Tuần 7"
-date: 2024-01-01
-weight: 1
+date: 2026-06-01
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 7:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tham gia sự kiện công nghệ AWS.
+* Thống nhất chốt đề tài đồ án, tiến hành vẽ sơ đồ kiến trúc hệ thống (Architecture) và quy trình nghiệp vụ (Workflow).
+* Tiếp tục học lý thuyết chuyên sâu và hoàn thành các bài Lab mở rộng.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
+| 2 | **Tham gia sự kiện công nghệ AWS** <br>- Tham dự sự kiện công nghệ do AWS tổ chức <br>- Cập nhật kiến thức về các dịch vụ và giải pháp AWS mới nhất <br>- Kết nối và trao đổi kinh nghiệm với cộng đồng | 01/06/2026 | 01/06/2026 | |
+| 3 | **Chốt đề tài đồ án cuối khóa** <br>- Họp nhóm thống nhất đề tài chính thức <br>- Xác định phạm vi (scope) và các tính năng cốt lõi của dự án <br>- Lựa chọn stack công nghệ và các dịch vụ AWS sử dụng | 02/06/2026 | 02/06/2026 | |
+| 4 | **Vẽ sơ đồ kiến trúc hệ thống** <br>- Thiết kế Architecture Diagram cho dự án <br>- Xác định các thành phần hệ thống và mối quan hệ giữa chúng <br>- Chọn lựa các dịch vụ AWS phù hợp cho từng thành phần | 03/06/2026 | 04/06/2026 | |
+| 5 | **Thiết kế quy trình nghiệp vụ (Workflow)** <br>- Vẽ sơ đồ luồng hoạt động (Workflow Diagram) <br>- Mô tả chi tiết quy trình xử lý dữ liệu và tương tác người dùng <br>- Xác định các điểm tích hợp giữa Frontend và Backend | 05/06/2026 | 05/06/2026 | |
+| 6 | **Hoàn thành các bài Lab mở rộng** <br>- Tiếp tục học lý thuyết chuyên sâu về các dịch vụ AWS <br>- Thực hành hoàn thành các bài Lab bổ sung <br>- Áp dụng kiến thức đã học vào thiết kế dự án | 06/06/2026 | 06/06/2026 | |
 
 ### Kết quả đạt được tuần 7:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* **Tham gia sự kiện công nghệ AWS**: Cập nhật các xu hướng công nghệ Cloud mới nhất, mở rộng kiến thức về các dịch vụ và giải pháp AWS thông qua sự kiện công nghệ.
+* **Chốt đề tài đồ án cuối khóa**: Thống nhất đề tài chính thức cho dự án tốt nghiệp, xác định rõ phạm vi, tính năng cốt lõi và stack công nghệ sử dụng.
+* **Hoàn thành sơ đồ kiến trúc hệ thống (Architecture Diagram)**: Thiết kế sơ đồ kiến trúc chi tiết cho dự án, xác định các thành phần hệ thống, mối quan hệ giữa chúng và các dịch vụ AWS phù hợp cho từng thành phần.
+* **Thiết kế quy trình nghiệp vụ (Workflow)**: Vẽ sơ đồ luồng hoạt động mô tả chi tiết quy trình xử lý dữ liệu, tương tác người dùng và các điểm tích hợp giữa Frontend và Backend.
+* **Hoàn thành các bài Lab mở rộng**: Tiếp tục nâng cao kiến thức chuyên sâu thông qua các bài Lab bổ sung, áp dụng trực tiếp vào thiết kế và triển khai dự án cuối khóa.

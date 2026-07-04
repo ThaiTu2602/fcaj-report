@@ -1,59 +1,31 @@
 ---
 title: "Worklog Tuần 9"
-date: 2024-01-01
-weight: 1
+date: 2026-06-15
+weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 9:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Triển khai xây dựng phần giao diện (Frontend) và phần xử lý logic (Backend) cho dự án tốt nghiệp.
+* Thiết kế và cấu hình cơ sở dữ liệu NoSQL cho dự án bằng **Amazon DynamoDB**.
+* Tích hợp dịch vụ **Amazon Cognito** để quản lý người dùng, xử lý xác thực và đăng nhập bảo mật.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
+| 2 | **Xây dựng giao diện Frontend** <br>- Thiết kế và phát triển các trang giao diện chính của dự án <br>- Xây dựng các component tái sử dụng <br>- Cấu hình routing và navigation | 15/06/2026 | 16/06/2026 | |
+| 3 | **Phát triển Backend cho dự án** <br>- Tạo các Lambda Functions xử lý logic nghiệp vụ của dự án <br>- Thiết kế và triển khai REST API với API Gateway <br>- Xây dựng các endpoint CRUD cho từng chức năng | 17/06/2026 | 18/06/2026 | |
+| 4 | **Thiết kế cơ sở dữ liệu DynamoDB** <br>- Phân tích yêu cầu dữ liệu và thiết kế Data Model <br>- Tạo các bảng DynamoDB với Partition Key và Sort Key phù hợp <br>- Cấu hình Global Secondary Index (GSI) cho các truy vấn phức tạp | 19/06/2026 | 19/06/2026 | |
+| 5 | **Tích hợp Amazon Cognito** <br>- Tạo User Pool để quản lý người dùng <br>- Cấu hình quy trình đăng ký (Sign Up) và đăng nhập (Sign In) <br>- Thiết lập xác thực đa yếu tố (MFA) và chính sách mật khẩu | 20/06/2026 | 20/06/2026 | |
+| 6 | **Tích hợp Cognito vào ứng dụng** <br>- Kết nối Frontend với Amazon Cognito cho luồng xác thực <br>- Cấu hình Cognito Identity Pool để cấp quyền truy cập tài nguyên AWS <br>- Kiểm tra luồng đăng ký, đăng nhập và phân quyền end-to-end | 21/06/2026 | 21/06/2026 | |
 
 ### Kết quả đạt được tuần 9:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* **Xây dựng giao diện Frontend cho dự án**: Thiết kế và phát triển các trang giao diện chính với các component tái sử dụng, hệ thống routing và navigation hoàn chỉnh.
+* **Triển khai Backend với kiến trúc Serverless**: Xây dựng các Lambda Functions xử lý logic nghiệp vụ, thiết kế REST API với API Gateway và các endpoint CRUD cho từng chức năng của dự án.
+* **Thiết kế cơ sở dữ liệu NoSQL tối ưu**: Phân tích yêu cầu dữ liệu, tạo các bảng DynamoDB với cấu trúc khóa phù hợp và cấu hình Global Secondary Index (GSI) để hỗ trợ các truy vấn phức tạp.
+* **Tích hợp hệ thống xác thực Amazon Cognito**: Thiết lập User Pool quản lý người dùng, cấu hình quy trình đăng ký/đăng nhập bảo mật với MFA và chính sách mật khẩu mạnh.
+* **Hoàn thành luồng xác thực end-to-end**: Kết nối Frontend với Cognito, cấu hình Identity Pool để cấp quyền truy cập tài nguyên AWS, kiểm tra thành công toàn bộ luồng đăng ký, đăng nhập và phân quyền.

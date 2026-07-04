@@ -1,115 +1,101 @@
 ---
 title: "Proposal"
-date: 2024-01-01
+date: 2026-07-01
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
-
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+# Jobs Matching Platform
+## Comprehensive Serverless AWS Solution for Automated Job Aggregation and Profile Analysis
 
 ### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+The Jobs Matching Platform, designed by the NOVA team, aims to fully automate the job data collection process and evaluate the suitability of candidate profiles (CVs). This solution directly serves the need to optimize the job search process, particularly targeting students and IT personnel. By applying artificial intelligence to competency matching, the platform helps users shorten search times and accurately pinpoint suitable job positions. The system fully leverages the AWS Serverless ecosystem to ensure high availability, flexible scalability, and optimal operational costs.
 
 ### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+*Current Problem*
+The current process of searching for recruitment information across various decentralized platforms requires a significant amount of time and manual effort. Job seekers often encounter obstacles in objectively and accurately self-evaluating their personal competencies against the specific requirements of each job description, especially for specialized skill sets like programming or cloud infrastructure administration.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+*Solution*
+The system utilizes AWS Lambda services to automatically collect job information via SerpApi, coordinates and controls data flow through Amazon SQS, and then stores it structurally in Amazon DynamoDB. The user interaction subsystem is protected by AWS WAF and handles authentication via Amazon Cognito. The automated CV analysis workflow extracts text from documents uploaded to Amazon S3, followed by integrating AI services for matching, semantic analysis, and suitability scoring. The entire software development and task management process is tightly operated through Jira, combined with source code version control on GitHub.
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+*Benefits and Return on Investment (ROI)*
+The solution moves towards standardizing the entire end-to-end job search and filtering process. Applying practical knowledge from labs and self-research on AWS Cloud architecture helps design a high-performance system with minimal operational costs. The serverless infrastructure platform ensures costs are incurred solely based on actual computational traffic, providing optimal economic efficiency and transparent system scalability in the future.
 
 ### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+![Platform Architecture](/images/2-Proposal/Jobs-Matching-Platform-Architecture.png)
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+The platform is built on AWS Serverless architecture principles, divided into independent yet tightly interconnected processing workflows: data ingestion, user interaction, profile analysis, and security operations.
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+*AWS Services Used*
+- *AWS EventBridge Scheduler*: Schedules automated triggers for job data retrieval from SerpApi.
+- *AWS Lambda*: Handles business logic processing for data fetching, searching, CV text extraction, and communication with the AI model API.
+- *Amazon SQS*: Manages message queues, acting as a buffer mechanism to prevent overload during the standardization of large volumes of job data.
+- *Amazon Cognito*: Manages user identity, authentication, and access authorization.
+- *AWS Amplify*: Provides the hosting and distribution environment for the web front-end application (Hosting).
+- *AWS WAF & Amazon API Gateway*: Establishes a defense line to protect the application from web security vulnerabilities and securely distributes RESTful API traffic.
+- *Amazon DynamoDB*: Stores job lists, personal wishlists, and CV evaluation results.
+- *Amazon S3*: Provides highly durable, secure, and infinitely scalable storage for candidate profile files.
+- *AWS IAM, Amazon CloudWatch, AWS Budgets*: Enforces core authorization management, monitors system health, and strictly controls operational budgets.
+- *AWS Systems Manager (SSM) Parameter Store*: Securely stores and manages API keys and sensitive configurations.
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+*Component Design*
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+
+- *Jobs Ingestion*: Collects scheduled data from third-party platforms, processes it asynchronously via SQS, performs data standardization using Lambda, and stores it in DynamoDB with a configured Time-To-Live (TTL) mechanism.
+- *User Interaction*: The front-end interface communicates via API Gateway, enabling queries on DynamoDB to filter, search for jobs, and save them to an independent wishlist table.
+- *CV Matching Flow*: Automatically triggered based on user CV upload events to S3. The system extracts text content, forwards data to the AI service for multi-dimensional matching against job descriptions, and records the returned score.
 
 ### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+The project is structured into 3 main parts: Data Collection and Processing; Building the Job Aggregation System; Job-Based CV Evaluation. Each part is implemented across 4 specific phases:
+1. *Research and Design*: In-depth analysis of the data structure returned by SerpApi and design of a multi-layer user authentication process. Researching AWS Serverless architecture documentation to select appropriate services.
+2. *Cost Calculation and Configuration*: Initializing automated budget limits on the AWS platform and preparing the local testing environment via Docker containers.
+3. *Business Flow Development and Feasibility Assessment*: Building Lambda computation functions, setting up API Gateway routing, configuring the SQS queue processing pipeline, and optimizing DynamoDB's NoSQL data structure. Continuous refinement to ensure a balance between performance and cost.
+4. *Testing and Deployment*: Performing load testing, validating system logic accuracy, handling exceptions, and deploying into the actual production environment.
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+*Technical Requirements*
+- *Data Collection and Processing*: Raw data received from SerpApi must undergo cleaning and format standardization before being written to DynamoDB.
+- *Database Design*: Requires designing a DynamoDB data model with optimal partition keys and sort keys to support high-speed retrievals and minimize read/write costs.
+- *AI Integration*: The integrated language service must ensure low latency and accurate domain-specific context understanding to objectively analyze complex technical profiles.
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+### 5. Roadmap & Implementation Milestones
+The execution roadmap is planned within the 12-week framework of the First Cloud AI Journey program at AWS Vietnam:
+- *Week 1 - Week 6*: Acquiring foundational knowledge and completing scheduled labs to solidify expertise in the AWS Cloud service ecosystem.
+- *Week 6 - Week 10*: Brainstorming ideas, finalizing the overall architectural design for the team project, and proceeding with coding and building the core system.
+- *Week 11 - Week 12*: Executing comprehensive testing procedures, assessing system completeness, making final adjustments, and deploying for actual use.
 
 ### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+The system operates entirely on a pay-as-you-go model.
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+*Expected Infrastructure Costs*
+- *SerpApi*: Utilizing the free tier of 250 queries/month. With the current usage frequency of 8 queries/day, the maximum total usage reaches 248 queries/month, equating to a cost of $0.
+- *AWS Lambda*: Optimizing costs by leveraging the free tier (1 million requests and 400,000 GB-seconds of compute time per month). Incurred costs remain close to zero for standard processing. Once the quota is exceeded, the applicable cost is $0.20 per 1 million requests.
+- *AWS Amplify*: Covered by the Free Tier with 1,000 build minutes/month, 5 GB storage, and 15 GB bandwidth served per month. Given the current project scale, the expected cost is $0. If the quota is exceeded, the cost is $0.01/build minute, $0.023/GB stored, and $0.15/GB served.
+- *Amazon SQS & DynamoDB*: Covered by the Free Tier with 1 million SQS requests/month and 25 GB storage, 25 WCU/RCU for DynamoDB. For the job data volume, the expected cost is $0. If exceeded, DynamoDB charges $1.25/million WCU and $0.25/million RCU.
+- *Amazon S3*: Covered by the Free Tier with 5 GB storage, 20,000 GET requests, and 2,000 PUT requests. Estimating 1,000 CVs (~1 GB), the cost is $0. If exceeded, the cost is $0.023/GB.
+- *Amazon API Gateway*: Covered by the Free Tier of 1 million API calls/month. Expected cost is $0. If exceeded, the cost is $1.00/million calls.
+- *AWS WAF*: No permanent free tier. Charges are $5.00/month per Web ACL, $1.00/month per rule, and $0.60/million requests. Minimum expected cost is about $6.00 - $7.00/month (if enabled).
+- *Gemini Flash Lite 3.1*:
+  - *Free tier limits*: 15 requests/minute; 250,000 tokens/minute; 500 requests/day.
+  - *Paid tier rates*: Input text at $0.25 / 1 million tokens; Output (including reasoning tokens) at $1.50 / 1 million tokens.
 
-Total: $0.7/month, $8.40/12 months
-
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+*Total Cost and Sustainability*
+- **Estimated Total Cost per Month**: Approximately **$0.00** (if WAF is disabled) or **~$8.00** (if WAF is maintained).
+- **Sustainability**: By using a Serverless architecture, the project fully capitalizes on AWS's generous Free Tier offerings. This enables long-term system sustainability with near-zero ongoing costs. Expenses only scale linearly when user traffic grows significantly, effectively mitigating financial risks for students.
 
 ### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+*Risk Matrix*
+- *Data Dependency*: High impact, medium probability (The system relies on a third-party job data collection API - SerpApi).
+- *CV Evaluation Quality*: High impact, medium probability (Results depend entirely on the capability of the utilized AI model).
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
+*Mitigation Strategies*
+- *API & Traffic*: Applying an event-driven architecture with SQS to regulate processing traffic. Implementing an exponential backoff algorithm to effectively handle rate limit errors when retrieving external data.
+- *Cost*: Setting up AWS Budgets to automatically trigger alert notifications to administrators when actual consumption reaches 80% of the allowed budget.
+- *AI Assessment*: Developing transparency features, allowing candidates to self-verify and confirm the list of skills extracted from their CV before the system proceeds with the final match.
 
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
+*Contingency Plan*
+- Activate a manual internal data collection process in case the third-party API service or AWS platform experiences downtime.
+- Use Infrastructure as Code tools (AWS CloudFormation) to quickly restore and recreate related network and service configurations to control incidents.
 
 ### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+*Technical Improvements*: Realizing full automation of the data ingestion and competency screening workflow. The AI-driven matching method provides higher data resolution, optimizing highly personalized search results compared to traditional rigid keyword filtering methods.
+*Long-term Value*: Building a continuously enriched quantitative job data warehouse, setting the stage for in-depth analysis of labor market trends. The system allows for independent scalability to integrate predictive analytics and machine learning features in subsequent development cycles.
