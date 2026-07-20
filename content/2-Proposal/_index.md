@@ -64,6 +64,7 @@ The execution roadmap is planned within the 12-week framework of the First Cloud
 - *Week 1 - Week 6*: Acquiring foundational knowledge and completing scheduled labs to solidify expertise in the AWS Cloud service ecosystem.
 - *Week 6 - Week 10*: Brainstorming ideas, finalizing the overall architectural design for the team project, and proceeding with coding and building the core system.
 - *Week 11 - Week 12*: Executing comprehensive testing procedures, assessing system completeness, making final adjustments, and deploying for actual use.
+- *Week 12 (06/07/2026 - 12/07/2026)*: Receiving professional feedback and contributions from admin mentors to complete internship procedures and submit internship evaluations. Finalizing reports and drawing personal lessons learned from the internship experience.
 
 ### 6. Budget Estimation
 The system operates entirely on a pay-as-you-go model.
