@@ -8,6 +8,8 @@ pre: " <b> 2. </b> "
 # Jobs Matching Platform
 ## Giải pháp AWS Serverless tổng hợp việc làm và phân tích hồ sơ tự động
 
+🔗 **Demo sản phẩm:** [https://main.d11bs7h108pe40.amplifyapp.com/](https://main.d11bs7h108pe40.amplifyapp.com/)
+
 ### 1. Tóm tắt điều hành
 Jobs Matching Platform được thiết kế bởi nhóm NOVA nhằm tự động hóa toàn diện quy trình thu thập dữ liệu việc làm và đánh giá mức độ phù hợp của hồ sơ ứng viên (CV). Giải pháp này phục vụ trực tiếp nhu cầu tối ưu hóa quá trình tìm kiếm việc làm, đặc biệt hướng tới đối tượng sinh viên và nhân sự khối ngành công nghệ thông tin. Thông qua việc ứng dụng trí tuệ nhân tạo vào đối chiếu năng lực, nền tảng hỗ trợ người dùng rút ngắn thời gian tìm kiếm và định vị chính xác vị trí công việc phù hợp. Hệ thống tận dụng triệt để hệ sinh thái AWS Serverless nhằm đảm bảo tính sẵn sàng cao, khả năng mở rộng linh hoạt và tối ưu hóa chi phí vận hành.
 

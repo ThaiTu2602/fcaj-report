@@ -8,6 +8,8 @@ pre: " <b> 2. </b> "
 # Jobs Matching Platform
 ## Comprehensive Serverless AWS Solution for Automated Job Aggregation and Profile Analysis
 
+🔗 **Product Demo:** [https://main.d11bs7h108pe40.amplifyapp.com/](https://main.d11bs7h108pe40.amplifyapp.com/)
+
 ### 1. Executive Summary
 The Jobs Matching Platform, designed by the NOVA team, aims to fully automate the job data collection process and evaluate the suitability of candidate profiles (CVs). This solution directly serves the need to optimize the job search process, particularly targeting students and IT personnel. By applying artificial intelligence to competency matching, the platform helps users shorten search times and accurately pinpoint suitable job positions. The system fully leverages the AWS Serverless ecosystem to ensure high availability, flexible scalability, and optimal operational costs.
 
